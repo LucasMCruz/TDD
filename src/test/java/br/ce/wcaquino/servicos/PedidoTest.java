@@ -5,6 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.ce.wcaquino.desconto.Calcular1Desconto;
+import br.ce.wcaquino.desconto.Calcular2Desconto;
+import br.ce.wcaquino.desconto.Calcular3Desconto;
+import br.ce.wcaquino.desconto.CalcularDesconto;
+import br.ce.wcaquino.desconto.SemDesconto;
 import br.ce.wcaquino.servicos.Pedido;
 
 public class PedidoTest {
@@ -13,7 +18,13 @@ public class PedidoTest {
 	
 	@Before
 	public void setUp() {
-		pedido = new Pedido();
+		CalcularDesconto calcDesc=
+				new Calcular3Desconto(
+						new Calcular2Desconto( 
+									new Calcular1Desconto( 
+											new SemDesconto(null))));
+						
+		pedido = new Pedido(calcDesc);
 	
 
 	}
